@@ -3,7 +3,7 @@
 
 ## AnyKernel setup
 # EDIFY properties
-kernel.string=tabp0le HTC10 Lineage Kernel v0.3
+kernel.string=tabp0le HTC10 Lineage Kernel v1.02.9-beta
 do.devicecheck=1
 do.initd=0
 do.scripts=0
@@ -26,7 +26,7 @@ is_slot_device=0;
 # set permissions for included ramdisk files
 chmod -R 755 $ramdisk
 chmod 640 $ramdisk/fstab.qcom
-backup_file fstab.qcom
+
 
 ## AnyKernel install
 dump_boot;
