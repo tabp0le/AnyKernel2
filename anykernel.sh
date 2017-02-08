@@ -3,7 +3,7 @@
 
 ## AnyKernel setup
 # EDIFY properties
-kernel.string=tabp0le HTC10 Lineage Kernel v1.02.9-beta
+kernel.string=tabp0le HTC10 Lineage Kernel v1.1.1
 do.devicecheck=1
 do.initd=0
 do.scripts=0
