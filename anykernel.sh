@@ -3,7 +3,7 @@
 
 ## AnyKernel setup
 # EDIFY properties
-kernel.string=tabp0le HTC10 Lineage Kernel EAS v0.3-beta
+kernel.string=HTC 10 LineageOS EAS tabp0le Kernel by tabp0le
 do.devicecheck=1
 do.initd=0
 do.scripts=0
@@ -32,7 +32,17 @@ chmod 640 $ramdisk/fstab.qcom
 dump_boot;
 
 # begin ramdisk changes
-
+remove_line init.rc "    mkdir /dev/stune/system-background"
+remove_line init.rc "    chown system system /dev/stune/system-background"
+remove_line init.rc "    chown system system /dev/stune/system-background/tasks"
+remove_line init.rc "    chmod 0664 /dev/stune/system-background/tasks"
+remove_line init.rc "    mkdir /dev/cpu-set/system-background"
+remove_line init.rc "    write /dev/cpu-set/system-background/cpus 0"
+remove_line init.rc "    write /dev/cpu-set/system-background/mems 0"
+remove_line init.rc "    chown system system /dev/cpuset/system-background"
+remove_line init.rc "    chown system system /dev/cpuset/system-background/tasks"
+remove_line init.rc "    chmod 0775 /dev/cpuset/system-background"
+remove_line init.rc "    chmod 0664 /dev/cpuset/system-background/tasks"
 
 # end ramdisk changes
 
