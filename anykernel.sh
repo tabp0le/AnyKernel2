@@ -32,6 +32,15 @@ chmod 640 $ramdisk/fstab.qcom
 dump_boot;
 
 # begin ramdisk changes
+
+# init.rc
+backup_file init.qcom.power.rc;
+backup_file init.rc;
+replace_file init.qcom.power.rc 0755 init.qcom.power.rc;
+
+# fstab
+backup_file fstab.qcom;
+
 remove_line init.rc "    mkdir /dev/stune/system-background"
 remove_line init.rc "    chown system system /dev/stune/system-background"
 remove_line init.rc "    chown system system /dev/stune/system-background/tasks"
