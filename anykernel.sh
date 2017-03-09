@@ -9,6 +9,7 @@ do.initd=0
 do.scripts=0
 do.modules=0
 do.cleanup=1
+do.cleanuponabort=0
 device.name1=htc_pmewl
 device.name2=htc_pmeuhl
 device.name3=htc_pmewhl
