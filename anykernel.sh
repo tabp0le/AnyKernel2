@@ -53,7 +53,7 @@ remove_line init.rc "    chown system system /dev/cpuset/system-background"
 remove_line init.rc "    chown system system /dev/cpuset/system-background/tasks"
 remove_line init.rc "    chmod 0775 /dev/cpuset/system-background"
 remove_line init.rc "    chmod 0664 /dev/cpuset/system-background/tasks"
-insert_line init.rc "	 chmod 0660 /dev/cpuctl"
+insert_line init.rc "	 chmod 0660 /dev/cpuctl" after "mkdir /dev/cpuctl" "chmod 0660 /dev/cpuctl"
 
 # end ramdisk changes
 
