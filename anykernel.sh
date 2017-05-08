@@ -5,7 +5,7 @@
 
 # begin properties
 properties() {
-kernel.string=HTC 10 LineageOS EAS tabp0le Kernel by tabp0le
+kernel.string=HTC 10 EAS Enablement by tabp0le
 
 do.devicecheck=1
 do.initd=0
