@@ -12,6 +12,7 @@ do.initd=0
 do.scripts=0
 do.modules=0
 do.cleanup=1
+do.syslibs=1
 do.cleanuponabort=0
 device.name1=htc_pmewl
 device.name2=htc_pmeuhl
@@ -31,7 +32,6 @@ is_slot_device=0;
 ## AnyKernel permissions
 # set permissions for included ramdisk files
 chmod -R 755 $ramdisk
-chmod 640 $ramdisk/fstab.qcom
 
 
 ## AnyKernel install
