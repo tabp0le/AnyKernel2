@@ -264,6 +264,39 @@ on boot
     chown system system /sys/class/leds/lcd-backlight/burst_switch
     chown system system /sys/class/leds/lcd-backlight-nits/brightness
 
+    # HDMI
+    chmod 644 /sys/class/graphics/fb1/hpd
+    chmod 644 /sys/class/graphics/fb1/res_info
+    chmod 644 /sys/class/graphics/fb1/vendor_name
+    chmod 644 /sys/class/graphics/fb1/product_description
+    chmod 644 /sys/class/graphics/fb1/video_mode
+    chmod 644 /sys/class/graphics/fb1/format_3d
+    chmod 644 /sys/class/graphics/fb1/s3d_mode
+    chmod 644 /sys/class/graphics/fb1/dynamic_fps
+    chmod 644 /sys/class/graphics/fb1/msm_fb_dfps_mode
+    chmod 644 /sys/class/graphics/fb1/cec/enable
+    chmod 644 /sys/class/graphics/fb1/cec/logical_addr
+    chmod 644 /sys/class/graphics/fb1/cec/rd_msg
+    chmod 644 /sys/class/graphics/fb1/pa
+    chmod 600 /sys/class/graphics/fb1/cec/wr_msg
+    chmod 644 /sys/class/graphics/fb1/hdcp/tp
+    chown system graphics /sys/class/graphics/fb1/hpd
+    chown system graphics /sys/class/graphics/fb1/res_info
+    chown system graphics /sys/class/graphics/fb1/vendor_name
+    chown system graphics /sys/class/graphics/fb1/product_description
+    chown system graphics /sys/class/graphics/fb1/video_mode
+    chown system graphics /sys/class/graphics/fb1/format_3d
+    chown system graphics /sys/class/graphics/fb1/s3d_mode
+    chown system graphics /sys/class/graphics/fb1/dynamic_fps
+    chown system graphics /sys/class/graphics/fb1/msm_fb_dfps_mode
+    chown system graphics /sys/class/graphics/fb1/cec/enable
+    chown system graphics /sys/class/graphics/fb1/cec/logical_addr
+    chown system graphics /sys/class/graphics/fb1/cec/rd_msg
+    chown system graphics /sys/class/graphics/fb1/pa
+    chown system graphics /sys/class/graphics/fb1/cec/wr_msg
+    chown system graphics /sys/class/graphics/fb1/hdcp/tp
+    symlink /sys/dev/graphics/fb1 /sys/devices/virtual/switch/hdmi
+
     # Capacitive key disabler permissions
     chown system system /sys/devices/soc/757a000.i2c/i2c-6/6-0064/disable_key
 
@@ -559,7 +592,7 @@ on property:sys.shutdown.requested=*
 service perfd /system/vendor/bin/perfd
    class main
    user root
-   group root readproc
+   group root readproc system
    disabled
    socket perfd seqpacket 0666 root system
    writepid /dev/cpuset/system-background/tasks
@@ -627,11 +660,11 @@ service qseecomd /system/bin/qseecomd
     group root
     writepid /dev/cpuset/system-background/tasks
 
-#service qti /system/vendor/bin/qti
-#    class main
-#    user radio
-#    group radio net_raw diag usb net_admin
-#    writepid /dev/cpuset/system-background/tasks
+service qti /system/vendor/bin/qti
+    class main
+    user radio
+    group radio net_raw diag usb net_admin
+    writepid /dev/cpuset/system-background/tasks
 
 service rmt_storage /system/bin/rmt_storage
     class core
@@ -691,6 +724,12 @@ service hostapd /system/bin/hostapd -dd /data/hostapd/hostapd.conf
     user root
     group root
     oneshot
+    disabled
+
+service profiler_daemon /system/bin/profiler_daemon
+    class late_start
+    user root
+    group root
     disabled
 
 # Firmware linking to /firmware/image
