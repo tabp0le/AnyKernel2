@@ -34,15 +34,20 @@ chmod -R 755 $ramdisk
 chmod 640 $ramdisk/fstab.qcom
 
 
+
 ## AnyKernel install
 dump_boot;
 
 # begin ramdisk changes
+backup_file init.qcom.power.rc;
+replace_file init.qcom.power.rc 0755 init.qcom.power.rc;
 
+backup_file init.qcom.power.rc;
+replace_file init.qcom.rc 0755 init.qcom.rc;
 
 # fstab
 backup_file fstab.qcom;
-
+replace_file fstab.qcom 0640 fstab.qcom;
 
 # end ramdisk changes
 
